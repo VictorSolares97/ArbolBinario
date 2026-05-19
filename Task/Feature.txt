@@ -1,0 +1,3 @@
+Feature
+- Nueva ventana para realizar recorrido, buscar, Calcular DIstancia y Listado de Nodos
+- En base a la distancia de Km de la Capital... Crear un metodo que determine que departamentos vecinos son viables. Por ejemplo, Si Tengo dos Nodos Hijos, Chimaltenango (50), Sololá (30) y quiero agregar Escuintla (40), solo puede ser Hijo de Dos o Sololá o La capital. NO puede ser de un nodo que este mas lejos que el nodo que vaya ingresar (Ordenamiento Directo)
