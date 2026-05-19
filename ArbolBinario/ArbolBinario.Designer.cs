@@ -30,11 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArbolBinario));
             panel1 = new Panel();
+            btnListadoNodos = new Button();
+            btnCalcularDistancia = new Button();
             btnBuscarNodo = new Button();
             btnRecorrerArbol = new Button();
             tvMostrarArbol = new TreeView();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            label9 = new Label();
+            cboxDepartamentoVecino = new ComboBox();
             btnGuardarDepartamento = new Button();
             cboxCapital = new ComboBox();
             label4 = new Label();
@@ -54,12 +58,8 @@
             cboxDepartamento = new ComboBox();
             txtNombreMunicipio = new TextBox();
             label5 = new Label();
-            cboxDepartamentoVecino = new ComboBox();
-            label9 = new Label();
             groupBox5 = new GroupBox();
             dgvResultados = new DataGridView();
-            btnCalcularDistancia = new Button();
-            btnListadoNodos = new Button();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -80,6 +80,34 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1230, 74);
             panel1.TabIndex = 1;
+            // 
+            // btnListadoNodos
+            // 
+            btnListadoNodos.Anchor = AnchorStyles.Top;
+            btnListadoNodos.BackColor = SystemColors.ScrollBar;
+            btnListadoNodos.FlatStyle = FlatStyle.Flat;
+            btnListadoNodos.Image = (Image)resources.GetObject("btnListadoNodos.Image");
+            btnListadoNodos.ImageAlign = ContentAlignment.MiddleLeft;
+            btnListadoNodos.Location = new Point(653, 11);
+            btnListadoNodos.Name = "btnListadoNodos";
+            btnListadoNodos.Size = new Size(206, 44);
+            btnListadoNodos.TabIndex = 6;
+            btnListadoNodos.Text = "Listado de Nodos";
+            btnListadoNodos.UseVisualStyleBackColor = false;
+            // 
+            // btnCalcularDistancia
+            // 
+            btnCalcularDistancia.Anchor = AnchorStyles.Top;
+            btnCalcularDistancia.BackColor = SystemColors.ScrollBar;
+            btnCalcularDistancia.FlatStyle = FlatStyle.Flat;
+            btnCalcularDistancia.Image = (Image)resources.GetObject("btnCalcularDistancia.Image");
+            btnCalcularDistancia.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCalcularDistancia.Location = new Point(441, 11);
+            btnCalcularDistancia.Name = "btnCalcularDistancia";
+            btnCalcularDistancia.Size = new Size(206, 44);
+            btnCalcularDistancia.TabIndex = 5;
+            btnCalcularDistancia.Text = "Calcular Distancia";
+            btnCalcularDistancia.UseVisualStyleBackColor = false;
             // 
             // btnBuscarNodo
             // 
@@ -151,6 +179,24 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Departamento";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(6, 176);
+            label9.Name = "label9";
+            label9.Size = new Size(163, 21);
+            label9.TabIndex = 18;
+            label9.Text = "Departamento Vecino:";
+            // 
+            // cboxDepartamentoVecino
+            // 
+            cboxDepartamentoVecino.FormattingEnabled = true;
+            cboxDepartamentoVecino.Items.AddRange(new object[] { "-------------" });
+            cboxDepartamentoVecino.Location = new Point(213, 168);
+            cboxDepartamentoVecino.Name = "cboxDepartamentoVecino";
+            cboxDepartamentoVecino.Size = new Size(319, 29);
+            cboxDepartamentoVecino.TabIndex = 17;
+            // 
             // btnGuardarDepartamento
             // 
             btnGuardarDepartamento.BackColor = SystemColors.ScrollBar;
@@ -164,6 +210,7 @@
             btnGuardarDepartamento.TabIndex = 16;
             btnGuardarDepartamento.Text = "Guardar";
             btnGuardarDepartamento.UseVisualStyleBackColor = false;
+            btnGuardarDepartamento.Click += btnGuardarDepartamento_Click;
             // 
             // cboxCapital
             // 
@@ -207,6 +254,7 @@
             txtDistanciaDepartamento.Name = "txtDistanciaDepartamento";
             txtDistanciaDepartamento.Size = new Size(319, 29);
             txtDistanciaDepartamento.TabIndex = 8;
+            txtDistanciaDepartamento.TextChanged += txtDistanciaDepartamento_TextChanged;
             // 
             // label2
             // 
@@ -339,24 +387,6 @@
             label5.TabIndex = 13;
             label5.Text = "Nombre:";
             // 
-            // cboxDepartamentoVecino
-            // 
-            cboxDepartamentoVecino.FormattingEnabled = true;
-            cboxDepartamentoVecino.Items.AddRange(new object[] { "-------------" });
-            cboxDepartamentoVecino.Location = new Point(213, 168);
-            cboxDepartamentoVecino.Name = "cboxDepartamentoVecino";
-            cboxDepartamentoVecino.Size = new Size(319, 29);
-            cboxDepartamentoVecino.TabIndex = 17;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(6, 176);
-            label9.Name = "label9";
-            label9.Size = new Size(163, 21);
-            label9.TabIndex = 18;
-            label9.Text = "Departamento Vecino:";
-            // 
             // groupBox5
             // 
             groupBox5.Controls.Add(dgvResultados);
@@ -381,35 +411,7 @@
             dgvResultados.Size = new Size(1197, 223);
             dgvResultados.TabIndex = 0;
             // 
-            // btnCalcularDistancia
-            // 
-            btnCalcularDistancia.Anchor = AnchorStyles.Top;
-            btnCalcularDistancia.BackColor = SystemColors.ScrollBar;
-            btnCalcularDistancia.FlatStyle = FlatStyle.Flat;
-            btnCalcularDistancia.Image = (Image)resources.GetObject("btnCalcularDistancia.Image");
-            btnCalcularDistancia.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCalcularDistancia.Location = new Point(441, 11);
-            btnCalcularDistancia.Name = "btnCalcularDistancia";
-            btnCalcularDistancia.Size = new Size(206, 44);
-            btnCalcularDistancia.TabIndex = 5;
-            btnCalcularDistancia.Text = "Calcular Distancia";
-            btnCalcularDistancia.UseVisualStyleBackColor = false;
-            // 
-            // btnListadoNodos
-            // 
-            btnListadoNodos.Anchor = AnchorStyles.Top;
-            btnListadoNodos.BackColor = SystemColors.ScrollBar;
-            btnListadoNodos.FlatStyle = FlatStyle.Flat;
-            btnListadoNodos.Image = (Image)resources.GetObject("btnListadoNodos.Image");
-            btnListadoNodos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnListadoNodos.Location = new Point(653, 11);
-            btnListadoNodos.Name = "btnListadoNodos";
-            btnListadoNodos.Size = new Size(206, 44);
-            btnListadoNodos.TabIndex = 6;
-            btnListadoNodos.Text = "Listado de Nodos";
-            btnListadoNodos.UseVisualStyleBackColor = false;
-            // 
-            // Form1
+            // ArbolBinario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -420,8 +422,9 @@
             Controls.Add(groupBox2);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
-            Name = "Form1";
+            Name = "ArbolBinario";
             Text = "Form1";
+            Load += ArbolBinario_Load;
             panel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);

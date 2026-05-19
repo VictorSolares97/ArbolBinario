@@ -27,7 +27,7 @@ namespace Backend
         }
 
         //Metodo para Consultar Municipio (Seleccionar Municipio)
-        public DataTable MtdAgregarMunicipio()
+        public DataTable MtdConsultarMunicipio()
         {
             string Query = "Select * from Municipio";//Cambiar Query
             SqlDataAdapter Adapter = new SqlDataAdapter(Query, conn.MtdAbrirConexion());
