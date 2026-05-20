@@ -60,7 +60,7 @@ namespace Backend
             return dt;
         }
 
-        public int ObtenerIdDepartamento(string nombre)
+        public int ObtenerIdDepartamento(string nombre) // Obtener Id del departamento para Clave Foranea
         {
             string Query = "SELECT Id FROM Departamento WHERE Nombre = @Nombre";
             SqlCommand cmd = new SqlCommand(Query, conn.MtdAbrirConexion());
@@ -70,5 +70,51 @@ namespace Backend
 
             return result != null ? Convert.ToInt32(result) : -1;
         }
+
+        // Obtiene la cantidad de Municipios Guardados en un Departamento
+        public int MtdObtenerCantidadMunicipios(int departamentoId)
+        {
+            string Query = "SELECT COUNT(*) FROM Municipio WHERE DepartamentoId = @DepartamentoId";
+            SqlCommand cmd = new SqlCommand(Query, conn.MtdAbrirConexion());
+            cmd.Parameters.AddWithValue("@DepartamentoId", departamentoId);
+
+            int cantidad = (int)cmd.ExecuteScalar();
+            conn.MtdCerrarConexion();
+            return cantidad;
+        }
+
+        //Obtiene el Limite de Municipios guardados en la DB
+        public int MtdObtenerLimiteMunicipios(int departamentoId)
+        {
+            string Query = "SELECT CantidadMunicipios FROM Departamento WHERE Id = @DepartamentoId";
+            SqlCommand cmd = new SqlCommand(Query, conn.MtdAbrirConexion());
+            cmd.Parameters.AddWithValue("@DepartamentoId", departamentoId);
+
+            int limite = (int)cmd.ExecuteScalar();
+            conn.MtdCerrarConexion();
+            return limite;
+        }
+
+        public DataTable MtdConsultarDepartamentoPorId(int departamentoId)
+        {
+            string query = @"
+        SELECT d.Id, d.Nombre, d.DistanciaCapital, d.CantidadMunicipios, d.DepartamentoVecino,
+               v.Nombre AS NombreVecino
+        FROM Departamento d
+        LEFT JOIN Departamento v ON d.DepartamentoVecino = v.Id
+        WHERE d.Id = @DepartamentoId";
+
+            SqlCommand sqlcm = new SqlCommand(query, conn.MtdAbrirConexion());
+            sqlcm.Parameters.AddWithValue("@DepartamentoId", departamentoId);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlcm);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            conn.MtdCerrarConexion();
+
+            return dt;
+        }
+
     }
 }

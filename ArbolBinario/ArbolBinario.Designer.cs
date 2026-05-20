@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArbolBinario));
             panel1 = new Panel();
+            btnEliminarNodo = new Button();
             btnListadoNodos = new Button();
             btnCalcularDistancia = new Button();
             btnBuscarNodo = new Button();
@@ -59,19 +60,19 @@
             txtNombreMunicipio = new TextBox();
             label5 = new Label();
             groupBox5 = new GroupBox();
-            dgvResultados = new DataGridView();
+            txtResultado = new TextBox();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ActiveBorder;
+            panel1.Controls.Add(btnEliminarNodo);
             panel1.Controls.Add(btnListadoNodos);
             panel1.Controls.Add(btnCalcularDistancia);
             panel1.Controls.Add(btnBuscarNodo);
@@ -80,6 +81,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1230, 74);
             panel1.TabIndex = 1;
+            // 
+            // btnEliminarNodo
+            // 
+            btnEliminarNodo.Anchor = AnchorStyles.Top;
+            btnEliminarNodo.BackColor = SystemColors.ScrollBar;
+            btnEliminarNodo.FlatStyle = FlatStyle.Flat;
+            btnEliminarNodo.Image = (Image)resources.GetObject("btnEliminarNodo.Image");
+            btnEliminarNodo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEliminarNodo.Location = new Point(865, 11);
+            btnEliminarNodo.Name = "btnEliminarNodo";
+            btnEliminarNodo.Size = new Size(206, 44);
+            btnEliminarNodo.TabIndex = 7;
+            btnEliminarNodo.Text = "Eliminar Ubicación";
+            btnEliminarNodo.UseVisualStyleBackColor = false;
             // 
             // btnListadoNodos
             // 
@@ -144,6 +159,7 @@
             tvMostrarArbol.Name = "tvMostrarArbol";
             tvMostrarArbol.Size = new Size(653, 459);
             tvMostrarArbol.TabIndex = 2;
+            tvMostrarArbol.AfterSelect += tvMostrarArbol_AfterSelect;
             // 
             // groupBox1
             // 
@@ -341,9 +357,9 @@
             label7.AutoSize = true;
             label7.Location = new Point(6, 106);
             label7.Name = "label7";
-            label7.Size = new Size(165, 21);
+            label7.Size = new Size(201, 21);
             label7.TabIndex = 15;
-            label7.Text = "Distancia de Cabecera:";
+            label7.Text = "Distancia de Cabecera (km):";
             // 
             // txtDistanciaCabecera
             // 
@@ -389,7 +405,8 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(dgvResultados);
+            groupBox5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox5.Controls.Add(txtResultado);
             groupBox5.Font = new Font("Segoe UI", 12F);
             groupBox5.Location = new Point(15, 593);
             groupBox5.Name = "groupBox5";
@@ -398,18 +415,15 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Resultados";
             // 
-            // dgvResultados
+            // txtResultado
             // 
-            dgvResultados.AllowUserToAddRows = false;
-            dgvResultados.AllowUserToDeleteRows = false;
-            dgvResultados.BackgroundColor = SystemColors.Control;
-            dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvResultados.Dock = DockStyle.Fill;
-            dgvResultados.Location = new Point(3, 25);
-            dgvResultados.Name = "dgvResultados";
-            dgvResultados.ReadOnly = true;
-            dgvResultados.Size = new Size(1197, 223);
-            dgvResultados.TabIndex = 0;
+            txtResultado.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtResultado.Location = new Point(6, 28);
+            txtResultado.Multiline = true;
+            txtResultado.Name = "txtResultado";
+            txtResultado.ReadOnly = true;
+            txtResultado.Size = new Size(1188, 217);
+            txtResultado.TabIndex = 0;
             // 
             // ArbolBinario
             // 
@@ -432,7 +446,7 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvResultados).EndInit();
+            groupBox5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -465,8 +479,9 @@
         private ComboBox cboxDepartamentoVecino;
         private Label label9;
         private GroupBox groupBox5;
-        private DataGridView dgvResultados;
         private Button btnListadoNodos;
         private Button btnCalcularDistancia;
+        private Button btnEliminarNodo;
+        private TextBox txtResultado;
     }
 }
