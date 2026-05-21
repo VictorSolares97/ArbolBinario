@@ -118,16 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnEliminarNodo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAQpJREFUSEvtlLtKA0EYRsdOouKt0Fq8IdgpqKCF2tsp2FmkSTobb72WPoHgK/iG
-        npPZvxAcdsdYKOTAYT52vskfstlNE36TPt41msdmCZ8wPvS9kO3Y7cwsDvEDL/C84CFu4wHa9cwctnKJ
-        Hl6s9AhvsJUevuAbxs/Qpt1n9Gwn1vEqx7SJezmm3UbZx40cR13PdGYBBzmmEzzOcbRGXkP3xK5nOjOF
-        DzkWB2xhDLDrmSoem7U0YAdjQHSr8P8tpQGuMSC6Vfz/AaV7sJzjlwE/ugelASs5jj/gFqfxFM+8AGYV
-        r5nt2K3mGn2KZzC+dbx3ZBXds2O3Gp/MV7zH794/6p6deZzwJ0npE5fLMhs11LSDAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btnListadoNodos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

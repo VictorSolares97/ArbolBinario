@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArbolBinario));
             panel1 = new Panel();
-            btnEliminarNodo = new Button();
             btnListadoNodos = new Button();
             btnCalcularDistancia = new Button();
             btnBuscarNodo = new Button();
@@ -72,7 +71,6 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ActiveBorder;
-            panel1.Controls.Add(btnEliminarNodo);
             panel1.Controls.Add(btnListadoNodos);
             panel1.Controls.Add(btnCalcularDistancia);
             panel1.Controls.Add(btnBuscarNodo);
@@ -81,20 +79,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1230, 74);
             panel1.TabIndex = 1;
-            // 
-            // btnEliminarNodo
-            // 
-            btnEliminarNodo.Anchor = AnchorStyles.Top;
-            btnEliminarNodo.BackColor = SystemColors.ScrollBar;
-            btnEliminarNodo.FlatStyle = FlatStyle.Flat;
-            btnEliminarNodo.Image = (Image)resources.GetObject("btnEliminarNodo.Image");
-            btnEliminarNodo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminarNodo.Location = new Point(865, 11);
-            btnEliminarNodo.Name = "btnEliminarNodo";
-            btnEliminarNodo.Size = new Size(206, 44);
-            btnEliminarNodo.TabIndex = 7;
-            btnEliminarNodo.Text = "Eliminar Ubicación";
-            btnEliminarNodo.UseVisualStyleBackColor = false;
             // 
             // btnListadoNodos
             // 
@@ -109,6 +93,7 @@
             btnListadoNodos.TabIndex = 6;
             btnListadoNodos.Text = "Listado de Nodos";
             btnListadoNodos.UseVisualStyleBackColor = false;
+            btnListadoNodos.Click += btnListadoNodos_Click;
             // 
             // btnCalcularDistancia
             // 
@@ -123,6 +108,7 @@
             btnCalcularDistancia.TabIndex = 5;
             btnCalcularDistancia.Text = "Calcular Distancia";
             btnCalcularDistancia.UseVisualStyleBackColor = false;
+            btnCalcularDistancia.Click += btnCalcularDistancia_Click;
             // 
             // btnBuscarNodo
             // 
@@ -137,6 +123,7 @@
             btnBuscarNodo.TabIndex = 4;
             btnBuscarNodo.Text = "Buscar";
             btnBuscarNodo.UseVisualStyleBackColor = false;
+            btnBuscarNodo.Click += btnBuscarNodo_Click;
             // 
             // btnRecorrerArbol
             // 
@@ -151,6 +138,7 @@
             btnRecorrerArbol.TabIndex = 3;
             btnRecorrerArbol.Text = "Recorrido";
             btnRecorrerArbol.UseVisualStyleBackColor = false;
+            btnRecorrerArbol.Click += btnRecorrerArbol_Click;
             // 
             // tvMostrarArbol
             // 
@@ -159,6 +147,7 @@
             tvMostrarArbol.Name = "tvMostrarArbol";
             tvMostrarArbol.Size = new Size(653, 459);
             tvMostrarArbol.TabIndex = 2;
+            tvMostrarArbol.BeforeCollapse += tvMostrarArbol_BeforeCollapse;
             tvMostrarArbol.AfterSelect += tvMostrarArbol_AfterSelect;
             // 
             // groupBox1
@@ -481,7 +470,6 @@
         private GroupBox groupBox5;
         private Button btnListadoNodos;
         private Button btnCalcularDistancia;
-        private Button btnEliminarNodo;
         private TextBox txtResultado;
     }
 }
