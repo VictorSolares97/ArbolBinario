@@ -40,8 +40,6 @@
             label9 = new Label();
             cboxDepartamentoVecino = new ComboBox();
             btnGuardarDepartamento = new Button();
-            cboxCapital = new ComboBox();
-            label4 = new Label();
             label3 = new Label();
             txtCantidadMunicipios = new TextBox();
             txtDistanciaDepartamento = new TextBox();
@@ -168,8 +166,6 @@
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(cboxDepartamentoVecino);
             groupBox2.Controls.Add(btnGuardarDepartamento);
-            groupBox2.Controls.Add(cboxCapital);
-            groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(txtCantidadMunicipios);
             groupBox2.Controls.Add(txtDistanciaDepartamento);
@@ -187,7 +183,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(6, 176);
+            label9.Location = new Point(6, 141);
             label9.Name = "label9";
             label9.Size = new Size(163, 21);
             label9.TabIndex = 18;
@@ -197,7 +193,7 @@
             // 
             cboxDepartamentoVecino.FormattingEnabled = true;
             cboxDepartamentoVecino.Items.AddRange(new object[] { "-------------" });
-            cboxDepartamentoVecino.Location = new Point(213, 168);
+            cboxDepartamentoVecino.Location = new Point(213, 133);
             cboxDepartamentoVecino.Name = "cboxDepartamentoVecino";
             cboxDepartamentoVecino.Size = new Size(319, 29);
             cboxDepartamentoVecino.TabIndex = 17;
@@ -216,24 +212,6 @@
             btnGuardarDepartamento.Text = "Guardar";
             btnGuardarDepartamento.UseVisualStyleBackColor = false;
             btnGuardarDepartamento.Click += btnGuardarDepartamento_Click;
-            // 
-            // cboxCapital
-            // 
-            cboxCapital.FormattingEnabled = true;
-            cboxCapital.Items.AddRange(new object[] { "Sí", "No" });
-            cboxCapital.Location = new Point(213, 133);
-            cboxCapital.Name = "cboxCapital";
-            cboxCapital.Size = new Size(319, 29);
-            cboxCapital.TabIndex = 12;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 141);
-            label4.Name = "label4";
-            label4.Size = new Size(107, 21);
-            label4.TabIndex = 11;
-            label4.Text = "¿Es la Capital?";
             // 
             // label3
             // 
@@ -452,8 +430,6 @@
         private TextBox txtDistanciaDepartamento;
         private Label label3;
         private TextBox txtCantidadMunicipios;
-        private ComboBox cboxCapital;
-        private Label label4;
         private GroupBox groupBox3;
         private Label label6;
         private ComboBox cboxDepartamento;

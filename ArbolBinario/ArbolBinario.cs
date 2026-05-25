@@ -21,7 +21,6 @@ namespace ArbolBinario
             txtNombreDepartamento.Clear();
             txtDistanciaDepartamento.Clear();
             txtCantidadMunicipios.Clear();
-            cboxCapital.SelectedIndex = -1;
             cboxDepartamentoVecino.SelectedIndex = -1;
 
             txtNombreMunicipio.Clear();
@@ -263,8 +262,7 @@ namespace ArbolBinario
             if (
                 string.IsNullOrEmpty(txtNombreDepartamento.Text) ||
                 string.IsNullOrEmpty(txtDistanciaDepartamento.Text) ||
-                string.IsNullOrEmpty(txtCantidadMunicipios.Text) ||
-                string.IsNullOrEmpty(cboxCapital.Text)
+                string.IsNullOrEmpty(txtCantidadMunicipios.Text) 
                 )// Validar que todos los campos estén completos, mensaje de error si no lo están.
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -275,12 +273,11 @@ namespace ArbolBinario
                 string Nombre = txtNombreDepartamento.Text;
                 int DistanciaCapital = Convert.ToInt32(txtDistanciaDepartamento.Text);
                 int CantidadMunicipios = Convert.ToInt32(txtCantidadMunicipios.Text);
-                bool EsCapital = cboxCapital.SelectedItem.ToString() == "Sí" ? true : false;// Convierte los datos en booleano
                 int DepartamentoVecino = Convert.ToInt32(cboxDepartamentoVecino.SelectedValue);
 
                 try
                 {
-                    cd_departamento.MtdAgregarDepartamento(Nombre, DistanciaCapital, CantidadMunicipios, EsCapital, cboxDepartamentoVecino.SelectedItem.ToString());
+                    cd_departamento.MtdAgregarDepartamento(Nombre, DistanciaCapital, CantidadMunicipios, cboxDepartamentoVecino.SelectedItem.ToString());
                     MessageBox.Show("Departamento agregado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MuestraDatosTV();
                     MtdBuscarDepartamento();
@@ -610,31 +607,38 @@ namespace ArbolBinario
 
                 int distancia;
 
-                // Caso 1: ambos vecinos son Capital ? suma directa
-                if (vecino1.ToLower() == "capital" && vecino2.ToLower() == "capital")
+
+                // Caso 1: ambos vecinos son Capital
+                if (vecino1.Trim().Equals("Capital", StringComparison.OrdinalIgnoreCase) &&
+                    vecino2.Trim().Equals("Capital", StringComparison.OrdinalIgnoreCase))
                 {
                     distancia = dist1 + dist2;
                 }
-                // Caso 2: mismo vecino distinto de Capital ? calcular hijo?padre y luego sumar
-                if (vecino1.Trim().Equals(vecino2.Trim(), StringComparison.OrdinalIgnoreCase) && !vecino1.Trim().Equals("Capital", StringComparison.OrdinalIgnoreCase))
+
+                // Caso 2: ambos tienen el mismo vecino y no es Capital
+                else if (vecino1.Trim().Equals(vecino2.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                         !vecino1.Trim().Equals("Capital", StringComparison.OrdinalIgnoreCase))
                 {
                     DataTable dtPadre = cd_departamento.MtdConsultarDepartamentoPorNombre(vecino1.Trim());
+
                     if (dtPadre.Rows.Count > 0)
                     {
                         int distPadre = Convert.ToInt32(dtPadre.Rows[0]["DistanciaCapital"]);
+
                         int distHijo1 = Math.Abs(dist1 - distPadre);
                         int distHijo2 = Math.Abs(dist2 - distPadre);
+
                         distancia = distHijo1 + distHijo2;
                     }
                     else
                     {
-                        resultado = $"? No se encontró el nodo padre '{vecino1}' en la tabla Departamento.";
-                        distancia = -1;
+                        MessageBox.Show($"No se encontró el nodo padre '{vecino1}'.");
+
+                        return;
                     }
                 }
 
-
-                // Caso 3: vecinos distintos ? suma
+                // Caso 3: vecinos distintos
                 else
                 {
                     distancia = dist1 + dist2;

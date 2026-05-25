@@ -12,10 +12,10 @@ public class CD_Departamento
     Conexion conn = new Conexion();
 
     //Metodo para agregar un Nuevo Municipio (Boton Guardar)
-    public void MtdAgregarDepartamento(string Nombre, int DistanciaCapital, int CantidadMunicipios, bool EsCapital, string DepartamentoVecinoSeleccionado)
+    public void MtdAgregarDepartamento(string Nombre, int DistanciaCapital, int CantidadMunicipios, string DepartamentoVecinoSeleccionado)
     {
 
-        String QueryAgregar = "Insert into Departamento (DepartamentoVecino, Nombre, DistanciaCapital, CantidadMunicipios, EsCapital)values (@DepartamentoVecino, @Nombre, @DistanciaCapital, @CantidadMunicipios, @EsCapital);";
+        String QueryAgregar = "Insert into Departamento (DepartamentoVecino, Nombre, DistanciaCapital, CantidadMunicipios)values (@DepartamentoVecino, @Nombre, @DistanciaCapital, @CantidadMunicipios);";
 
         SqlCommand sqlcm = new SqlCommand(QueryAgregar, conn.MtdAbrirConexion());
 
@@ -41,7 +41,6 @@ public class CD_Departamento
         sqlcm.Parameters.AddWithValue("@Nombre", Nombre);
         sqlcm.Parameters.AddWithValue("@DistanciaCapital", DistanciaCapital);
         sqlcm.Parameters.AddWithValue("@CantidadMunicipios", CantidadMunicipios);
-        sqlcm.Parameters.AddWithValue("@EsCapital", EsCapital);
         sqlcm.ExecuteNonQuery();
         conn.MtdCerrarConexion();
 
@@ -124,7 +123,7 @@ public class CD_Departamento
             SqlConnection conexion = conn.MtdAbrirConexion();
 
             string query = @"SELECT Nombre, DistanciaCapital, CantidadMunicipios, 
-                                    EsCapital, DepartamentoVecino
+                             DepartamentoVecino
                              FROM Departamento
                              WHERE Nombre = @Nombre";
 
