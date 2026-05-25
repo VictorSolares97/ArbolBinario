@@ -205,7 +205,7 @@
             btnGuardarDepartamento.Font = new Font("Segoe UI", 18F);
             btnGuardarDepartamento.Image = (Image)resources.GetObject("btnGuardarDepartamento.Image");
             btnGuardarDepartamento.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarDepartamento.Location = new Point(326, 203);
+            btnGuardarDepartamento.Location = new Point(329, 209);
             btnGuardarDepartamento.Name = "btnGuardarDepartamento";
             btnGuardarDepartamento.Size = new Size(206, 44);
             btnGuardarDepartamento.TabIndex = 16;
